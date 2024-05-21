@@ -7,11 +7,6 @@ const APIRoute = require('./routes/APIRoute')
 const app = express();
 app.use(bodyParser.json()); 
 
-// Route that responds with "Hello"
-app.get('/hello', (req, res) => {
-    res.send('Hello');
-});
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

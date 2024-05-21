@@ -1,7 +1,7 @@
 
 const bcrypt = require('bcryptjs');
 const db = require('../database/db'); 
-const { isValidEmail, isValidPassword, isValidBase64 } = require('../utils/validations');
+const { isValidEmail, isValidPassword,isValidPhoneNumber, isValidImage } = require('../utils/validations');
 
 
 // register a new user
@@ -25,10 +25,10 @@ const register = async (req, res) => {
         return res.status(400).json({ error: 'Invalid email format.' });
     }
 
-    // Validate phone number length (if provided)
-    if (phone && phone.length < 10) {
-        return res.status(400).json({ error: 'Phone number must be at least 10 digits long.' });
+    if (phone && !isValidPhoneNumber(phone)) {
+        return res.status(400).json({ error: 'Phone number must be at least 10 digits long, including the country code.' });
     }
+    
 
     // Validate password format
     if (!isValidPassword(password)) {
@@ -36,8 +36,8 @@ const register = async (req, res) => {
     }
 
     // Validate photo as base64
-    if (!isValidBase64(photo)) {
-        return res.status(400).json({ error: 'Photo must be a valid base64 string.' });
+    if (!isValidImage(photo)) {
+        return res.status(400).json({ error: 'Photo must be a valid string.' });
     }
 
     // Hash the password

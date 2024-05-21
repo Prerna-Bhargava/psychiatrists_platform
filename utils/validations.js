@@ -11,11 +11,18 @@ const isValidPassword = (password) => {
     return re.test(password);
 };
 
-// Function to validate base64 format
-function isValidBase64(str) {
+// Function to validate Image as string
+function isValidImage(str) {
+
     if (typeof str !== 'string') return false;
-    return /^(data:image\/\w+;base64,)?[A-Za-z0-9+/=]+$/i.test(str);
+    return true;
+
 }
 
+// Function to validate phone number
+function isValidPhoneNumber(phone) {
+    const phoneRegex = /^\+\d{1,3}\d{10,}$/;
+    return phoneRegex.test(phone);
+}
 
-module.exports ={isValidEmail,isValidPassword,isValidBase64}
+module.exports ={isValidEmail,isValidPassword,isValidImage,isValidPhoneNumber}
