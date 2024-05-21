@@ -101,3 +101,10 @@ You can test the API using the following link:
 1. Clone the repository:
    ```sh
    git clone https://github.com/Prerna-Bhargava/psychiatrists_platform
+
+2. Update MySQL Database Credentials in the .env folder
+3. Database Dump:
+Inside the database folder of the cloned repository, there is a database dump file ( Dump.sql). You can import this dump file into your MySQL Workbench to set up the database schema and initial data. Open MySQL Workbench, create a new database (if not already created), and then import the dump file into this new database.Dump the database dump file(inside the database folder) in the sql workbench
+4. Start the project
+   ```sh
+   npm start
